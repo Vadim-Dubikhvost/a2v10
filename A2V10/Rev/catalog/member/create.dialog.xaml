@@ -1,0 +1,36 @@
+﻿<Dialog xmlns="clr-namespace:A2v10.Xaml;assembly=A2v10.Xaml"
+    Title="{Bind Member.Id, Format='Create member [{0}]'}" CssClass="lolkek">
+    
+    <Dialog.Buttons>
+        <Button Content="Save" Icon="Save" Command="{BindCmd Command=SaveAndClose, ValidRequired=True}" CssClass="but1"/>
+        <Button Content="Close" Icon="Close" Command="{BindCmd Command=Close}"/>
+    </Dialog.Buttons>
+    <Header Align="Center">Insert info here</Header>
+    <TabPanel>
+        <Tab Header="Stats">
+            <Grid Columns="1*, 1*">
+                <TextBox Value="{Bind Member.Name}" Label="Name" Align="Center" Grid.Row="1" Grid.ColSpan="2"/>
+                <TextBox Value="{Bind Member.Def}" Label="Def" Align="Center" Grid.Row="2" Grid.Col="1"/>
+                <TextBox Value="{Bind Member.Res}" Label="Resistance" Align="Center" Grid.Row="2" Grid.Col="2"/>
+                <TextBox Value="{Bind Member.Res_crit}" Label="Res_crit,%" Align="Center" Grid.Row="2" Grid.Col="3"/>
+                <TextBox Value="{Bind Member.Res_rage}" Label="Res_rage,%" Align="Center" Grid.Row="3" Grid.Col="1"/>
+                <TextBox Value="{Bind Member.BM}" Label="BM" Align="Center" Grid.Row="1" Grid.Col="3"/>
+                <TextBox Value="{Bind Member.Res_pen}" Label="Pen_res,%" Align="Center" Grid.Row="3" Grid.Col="2"/>
+                <TextBox Value="{Bind Member.Crit_chance}" Label="Crit_chance,%" Align="Center" Grid.Row="3" Grid.Col="3"/>
+                <TextBox Value="{Bind Member.Crit_strike}" Label="Crit_strike,%" Align="Center" Grid.Row="4" Grid.Col="1"/>
+                <TextBox Value="{Bind Member.Pen}" Label="Armor/res_pen,%" Align="Center" Grid.Row="4" Grid.Col="2"/>
+                <TextBox Value="{Bind Member.Rage}" Label="Rage,%" Align="Center" Grid.Row="4" Grid.Col="3"/>
+                <FieldSet Grid.Row="5" Grid.Col="1">
+                    <Radio Value="{Bind Member.Class}" Label="Страж" CheckedValue="Страж"/>
+                    <Radio Value="{Bind Member.Class}" Label="Рык" CheckedValue="Рык"/>
+                    <Radio Value="{Bind Member.Class}" Label="Син" CheckedValue="Син"/>
+                    <Radio Value="{Bind Member.Class}" Label="Маг" CheckedValue="Маг"/>
+                    <Radio Value="{Bind Member.Class}" Label="Ган" CheckedValue="Ган"/>
+                    <Radio Value="{Bind Member.Class}" Label="Жнец" CheckedValue="Жнец"/>
+                    <Radio Value="{Bind Member.Class}" Label="Друид" CheckedValue="Друид"/>
+                </FieldSet>
+                <StaticImage Url="/advertisement/g2066x512.png" Grid.Row="5" Grid.Col="3" Height="150"/>
+            </Grid>
+        </Tab>
+    </TabPanel>
+</Dialog>

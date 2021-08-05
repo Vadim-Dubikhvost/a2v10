@@ -1,0 +1,43 @@
+{
+  "schema": "revstat",
+  "model": "Members",
+  "actions": {
+    "index": {
+      "index": true,
+      "view": "index.view",
+      "template": "image.template"
+    },
+
+    "list": {
+      "model": "Members.List",
+      "view": "list.view"
+    }
+  },
+  "dialogs": {
+    "create": {
+      "view": "create.dialog",
+      "template": "create.template"
+    },
+    "edit": {
+      "view": "edit.dialog",
+      "template": "create.template"
+    },
+    "browse": {
+      "index": true,
+      "view": "browse.dialog"
+    }
+  },
+  "files": {
+    "image": {
+      "type": "sql",
+      "model": "Members.Image"
+    }
+  },
+  "commands": {
+    "writeImageId": {
+      "type": "sql",
+      "procedure": "wrImageId"
+    }
+  }
+}
+  

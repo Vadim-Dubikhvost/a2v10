@@ -1,0 +1,31 @@
+﻿<Dialog xmlns="clr-namespace:A2v10.Xaml;assembly=A2v10.Xaml"
+    Title="{Bind Event.Id, Format='Edit attendance [{0}]'}">
+    <Dialog.Buttons>
+        <Button Content="Save" Icon="Save" Command="{BindCmd Command=SaveAndClose}"/>
+        <Button Content="Close" Icon="Close" Command="{BindCmd Command=Close}"/>
+    </Dialog.Buttons>
+    <Header Align="Center">Insert info here</Header>
+
+    <TabPanel>
+        <Tab Header="Attendance">
+            <Grid Columns="1*,1*">
+                <TextBox Value="{Bind Event.Memberr}" Grid.Row="1" Grid.ColSpan="2"></TextBox>
+                <Header Grid.Row="2" Grid.Col="1">Ивент</Header>
+                <FieldSet Grid.Row="3" Grid.Col="1">
+                    <Radio Value="{Bind Event.Event}" Label="ОРЗ" CheckedValue="ОРЗ" />
+                    <Radio Value="{Bind Event.Event}" Label="Турнир" CheckedValue="Турнир" />
+                    <Radio Value="{Bind Event.Event}" Label="Осада" CheckedValue="Осада"/>
+                </FieldSet>
+                <Header Grid.Row="2" Grid.Col="2">Присутствие</Header>
+                <FieldSet Grid.Row="3" Grid.Col="2">
+                    <Radio Value="{Bind Event.IsAttended}" Label="Присутствовал" CheckedValue="Присутствовал"/>
+                    <Radio Value="{Bind Event.IsAttended}" Label="Отсутствовал" CheckedValue="Отсутствовал"/>
+                    <Radio Value="{Bind Event.IsAttended}" Label="Опоздал" CheckedValue="Опоздал"/>
+                </FieldSet>
+                <DatePicker Value="{Bind Event.EventDate}" Label="Дата ивента" Align="Center" Grid.Row="4" Grid.Col="1"/>
+                <StaticImage Url="/advertisement/g2066x512.png" Grid.RowSpan="4" Grid.Col="2" Height="150"/>
+            </Grid>
+        </Tab>
+    </TabPanel>
+    
+</Dialog>

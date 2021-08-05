@@ -1,0 +1,62 @@
+﻿<Page xmlns="clr-namespace:A2v10.Xaml;assembly=A2v10.Xaml">
+    <Page.Toolbar>
+        <Toolbar>
+            <Button Content="Add" Icon="Add" Command="{BindCmd Command=Dialog, Action=Append, Url='/catalog/member/create', 
+                Argument={Bind Members}}"/>
+            <Button Content="Reload" Icon="Reload" Command="{BindCmd Command=Reload}"/>
+            <Button Content="Report" Icon="List" Command="{BindCmd Command=Open, Url='/catalog/member/list',Argument=0, NewWindow=True}" Toolbar.Align="Right"/>
+            <TextBox Value="{Bind Parent.Filter.Name}" Label="Name"></TextBox>
+            <TextBox Value="{Bind Parent.Filter.Class}" Label="Class"></TextBox>
+            
+        </Toolbar>
+    </Page.Toolbar>
+    <Page.Pager>
+        <Pager Source="{Bind Parent.Pager}"/>
+    </Page.Pager>
+    <Page.CollectionView>
+        <CollectionView ItemsSource="{Bind Members}" RunAt="ServerUrl">
+            <CollectionView.Filter>
+                <FilterDescription>
+                    <FilterItem Property="Name" DataType="String"/>
+                    <FilterItem Property="Class" DataType="String"/>
+                    <FilterItem Property="BM" DataType="Number"/>
+                    <FilterItem Property="Def" DataType="Number"/>
+                    <FilterItem Property="Res" DataType="Number"/>
+                    <FilterItem Property="Res_crit" DataType="Number"/>
+                    <FilterItem Property="Res_rage" DataType="Number"/>
+                </FilterDescription>
+             </CollectionView.Filter>
+        </CollectionView>
+    </Page.CollectionView>
+    <DataGrid ItemsSource="{Bind Parent.ItemsSource}" Hover="True" Striped="True" GridLines="Both">
+        <DataGridColumn Header="Id" Content="{Bind Id}" Width="3rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Name" Content="{Bind Name}" Width="15rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Class" Content="{Bind Class}" Width="9rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Image" Width="9rem" Align="Center">
+            <FileImage If="{Bind Image.Id}" Value="{Bind Image}" Url="/catalog/member/Image" Height="20" Width="20"/>
+            
+        </DataGridColumn>
+        <DataGridColumn Width="20">
+            <UploadFile Url="/catalog/member/Image" Delegate="uploadAttachment" Argument="{Bind}"
+		Accept="application/pdf,image/*"/>
+        </DataGridColumn>
+        <DataGridColumn Header="BM" Content="{Bind BM}" Width="7rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Def" Content="{Bind Def}" Width="7rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Resistance" Content="{Bind Res}" Width="7rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Res_crit,%" Content="{Bind Res_crit}" Width="11rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Res_rage,%" Content="{Bind Res_rage}" Width="11rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Pen_res,%" Content="{Bind Res_pen}" Width="11rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Crit_chance,%" Content="{Bind Crit_chance}" Width="11rem"  Align="Center" Sort="True"/>
+        <DataGridColumn Header="Crit_strike,%" Content="{Bind Crit_strike}" Width="11rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Armor/res_pen,%" Content="{Bind Pen}" Width="11rem" Align="Center" Sort="True"/>
+        <DataGridColumn Header="Rage,%" Content="{Bind Rage}" Width="11rem" Align="Center" Sort="True"/>
+        <DataGridColumn Fit="True" Width="50">
+            <CommandBar Visibility="Hover">
+                <Button Icon="Edit" 
+					        Command="{BindCmd Command=Dialog, Action=Edit, Url='/catalog/member/edit', Argument={Bind}}"/>
+                <Button Icon="Clear" 
+					        Command="{BindCmd Command=DbRemove, Argument={Bind}, Confirm='Are you sure?'}"/>
+            </CommandBar>
+        </DataGridColumn>
+    </DataGrid>
+</Page>

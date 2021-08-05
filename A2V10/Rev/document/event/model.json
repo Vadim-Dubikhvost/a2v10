@@ -1,0 +1,25 @@
+{
+  "schema": "revstat",
+  "model": "Ev",
+  "actions": {
+    "index": {
+      "index": true,
+      "view": "index.view"
+    }
+  },
+  "dialogs": {
+    "create": {
+      "view": "create.dialog",
+      "template": "income.template"
+    },
+    "edit": {
+      "view": "edit.dialog"
+    }
+  },
+  "commands": {
+    "writeId": {
+      "type": "sql",
+      "procedure": "writeId"
+    }
+  }
+}

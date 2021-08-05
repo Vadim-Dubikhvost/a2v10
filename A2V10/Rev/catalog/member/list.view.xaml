@@ -1,0 +1,64 @@
+﻿<Page xmlns="clr-namespace:A2v10.Xaml;assembly=A2v10.Xaml">
+    <Page.Toolbar>
+        <Toolbar>
+            <Button Content="Excel" Icon="ExportExcel" Command="{BindCmd Command=ExportTo, Format=Excel, Argument={Bind Members}}"/>
+        </Toolbar>
+    </Page.Toolbar>
+    <SheetPage Orientation="Portrait">
+        <Sheet GridLines="Both" Striped="True" Width="715">
+            <Sheet.Columns>
+                <SheetColumn Width="30"/>
+                <SheetColumn Width="150"/>
+                <SheetColumn Width="70"/>
+                <SheetColumn Width="70"/>
+                <SheetColumn Width="90"/>
+                <SheetColumn Width="90"/>
+                <SheetColumn Width="70"/>
+                <SheetColumn Width="70"/>
+                <SheetColumn Width="70"/>
+                <SheetColumn Width="70"/>
+                <SheetColumn Width="70"/>
+                <SheetColumn Width="70"/>
+                <SheetColumn Width="70"/>
+            </Sheet.Columns>
+            <SheetSection>
+                <SheetRow Style="Title">
+                    <SheetCell ColSpan="13" Bold="True" Align="Center">Member list</SheetCell>
+                </SheetRow>
+                <SheetRow Style="Header">
+                    <SheetCell Content="Id" Align="Center"/>
+                    <SheetCell Content="Name" Align="Center"/>
+                    <SheetCell Content="Class" Align="Center"/>
+                    <SheetCell Content="BM" Align="Center"/>
+                    <SheetCell Content="Def" Align="Center"/>
+                    <SheetCell Content="Res" Align="Center"/>
+                    <SheetCell Content="Res_c" Align="Center"/>
+                    <SheetCell Content="Res_r" Align="Center"/>
+                    <SheetCell Content="Pen_r" Align="Center"/>
+                    <SheetCell Content="Crit_ch" Align="Center"/>
+                    <SheetCell Content="Crit_st" Align="Center"/>
+                    <SheetCell Content="Pen" Align="Center"/>
+                    <SheetCell Content="Rage" Align="Center"/>
+                </SheetRow>
+            </SheetSection>
+                <SheetSection ItemsSource="{Bind Members}">
+                    <SheetRow Style="Default">
+                        <SheetCell Content="{Bind Id}" Align="Center"/>
+                        <SheetCell Content="{Bind Name}" Align="Center"/>
+                        <SheetCell Content="{Bind Class}" Align="Center"/>
+                        <SheetCell Content="{Bind BM}" Align="Center"/>
+                        <SheetCell Content="{Bind Def}" Align="Center"/>
+                        <SheetCell Content="{Bind Res}" Align="Center"/>
+                        <SheetCell Content="{Bind Res_crit}" Align="Center"/>
+                        <SheetCell Content="{Bind Res_rage}" Align="Center"/>
+                        <SheetCell Content="{Bind Res_pen}" Align="Center"/>
+                        <SheetCell Content="{Bind Crit_chance}" Align="Center"/>
+                        <SheetCell Content="{Bind Crit_strike}" Align="Center"/>
+                        <SheetCell Content="{Bind Pen}" Align="Center"/>
+                        <SheetCell Content="{Bind Rage}" Align="Center"/>
+                </SheetRow>
+                </SheetSection>
+        </Sheet>
+    </SheetPage>
+</Page>
+		

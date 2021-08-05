@@ -1,0 +1,42 @@
+﻿<Page xmlns="clr-namespace:A2v10.Xaml;assembly=A2v10.Xaml">
+    <Page.Toolbar>
+        <Toolbar>
+        <Button Content="Add" Icon="Add" Command="{BindCmd Command=Dialog, Action=Append, Url='/document/event/create', Argument={Bind Events}}" />
+        <Button Content="Reload" Icon="Reload" Command="{BindCmd Command=Reload}"/>
+        <TextBox Value="{Bind Parent.Filter.Memberr}" Label="Name"></TextBox>
+        <TextBox Value="{Bind Parent.Filter.Event}" Label="Event"></TextBox>
+
+    </Toolbar>
+    </Page.Toolbar>
+    <Page.Pager>
+        <Pager Source="{Bind Parent.Pager}"/>
+    </Page.Pager>
+   
+    <Page.CollectionView>
+        <CollectionView ItemsSource="{Bind Events}" RunAt="ServerUrl">
+            <CollectionView.Filter>
+                <FilterDescription>
+                    <FilterItem Property="Memberr" DataType="String"/>
+                    <FilterItem Property="Event" DataType="String"/>
+
+                </FilterDescription>
+            </CollectionView.Filter>
+        </CollectionView>
+    </Page.CollectionView>
+    <DataGrid ItemsSource="{Bind Events}" GridLines="Both" Striped="True">
+            <DataGridColumn Content="{Bind Id}" Header="Id" Width="25" Align="Center"/>
+            <DataGridColumn Content="{Bind Memberr}" Header="Name" Width="200" Align="Center"/>
+            <DataGridColumn Content="{Bind Event}" Header="Event" Width="50" Align="Center"/>
+            <DataGridColumn Content="{Bind EventDate, DataType=Date}" Header="EventDate" Width="150" Align="Center"/>
+            <DataGridColumn Content="{Bind IsAttended}" Header="Attendance" Width="35" Align="Center"/>
+            <DataGridColumn Width="5" Align="Center">
+                <CommandBar Visibility="Hover">
+                    <Button Icon="Edit" Style="Green" 
+					        Command="{BindCmd Command=Dialog, Action=Edit, Url='/document/event/edit', Argument={Bind}}"/>
+                    <Button Icon="Clear" Style="Red" 
+					        Command="{BindCmd Command=DbRemove, Argument={Bind}, Confirm='Are you sure?'}"/>
+                </CommandBar>
+            </DataGridColumn>
+        </DataGrid>
+
+</Page>
